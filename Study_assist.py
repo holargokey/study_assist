@@ -14,6 +14,9 @@ from pypdf import PdfReader
 from langchain.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 #setting page layout
 st.set_page_config(layout="wide")
