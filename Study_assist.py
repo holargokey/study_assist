@@ -14,6 +14,7 @@ from pypdf import PdfReader
 from langchain.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
+#added to make the code work in streamlit
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
@@ -74,8 +75,6 @@ def get_document_prompt(docs):
     for i, doc in enumerate(docs, start=1):
         prompt += f"\nContent {i}:\n{doc}\n\n"
     return prompt
-
-
 
 
 # Sidebar (Collapsible Effect)
@@ -359,7 +358,7 @@ with col2:
 
                 # ✅ Initialize OpenAI client only once in session state
                 if "client" not in st.session_state:
-                    st.session_state.client = openai.OpenAI(api_key=st.session_state.api_key)
+                    st.session_state.client = openai.OpenAI(api_key=api_key)
 
                 response = st.session_state.client.chat.completions.create(
                     model="gpt-4o-mini",
