@@ -1,0 +1,9 @@
+streamlit
+pymupdf
+python-docx
+openai
+pypdf
+langchain
+langchain-openai
+chromadb
+langchain-community
