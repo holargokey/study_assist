@@ -111,7 +111,7 @@ def initialize_vector_db(notebook_content, persist_directory):
         os.makedirs(persist_directory, exist_ok=True)
 
     # ✅ Load OpenAI API Key
-        api_key = st.secrets("api_key")
+        api_key = st.secrets["api_key"]
 
     # ✅ Define OpenAI Embeddings
     embeddings = OpenAIEmbeddings(model="text-embedding-3-large", api_key=api_key)
@@ -190,7 +190,7 @@ with col2:
                 progress_bar.progress(60)
 
                 # ✅ Step 5: Load API Key
-                api_key = st.secrets("api_key")
+                api_key = st.secrets["api_key"]
 
                 # ✅ Step 6: Call OpenAI API
                 progress_text.write("🚀 Generating summary with AI... (80%)")
@@ -256,7 +256,7 @@ with col2:
                 progress_bar.progress(70)
 
                 #add the api_key
-                api_key = st.secrets("api_key")
+                api_key = st.secrets["api_key"]
 
                 client = openai.OpenAI(api_key=api_key)
 
@@ -352,7 +352,7 @@ with col2:
                 #add the api_key
                 # ✅ Ensure OpenAI API key is loaded only once
                 if "api_key" not in st.session_state:
-                    api_key = st.secrets("api_key")
+                    api_key = st.secrets["api_key"]
 
                 # ✅ Initialize OpenAI client only once in session state
                 if "client" not in st.session_state:
