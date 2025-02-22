@@ -167,7 +167,7 @@ with col2:
     if "db" in st.session_state and st.session_state.db is not None:
         if "summary" not in st.session_state:  #Run summary generation only once
             st.session_state.summary = None  # ✅ Initialize Summary State
-            st.session_state.summary_header = "📝 Notebook Summary"  # ✅ Store Header in Session State
+            st.session_state.summary_header = "Notebook Summary"  # ✅ Store Header in Session State
             progress_bar = st.progress(0)  #Initialize Progress Bar
             progress_text = st.empty()  #Placeholder for progress percentage updates
 
@@ -296,7 +296,7 @@ with col2:
     #############################################################################
     # Question Generation section
     #############################################################################
-    st.subheader("📝 Generate Quiz Questions")
+    st.subheader("Generate Quiz Questions")
 
     # Ensure session state is initialized
     if "quiz_questions" not in st.session_state:
@@ -446,9 +446,3 @@ with col2:
             st.warning(f"You left {unanswered_count} question(s) unanswered!")
 
     st.divider()  # Separate sections visually
-
-
-
-    #Save user scores & progress? 
-    #Provide explanations for correct/incorrect answers? 
-    #Add a leaderboard for top scores? 
