@@ -30,12 +30,15 @@ col1, col2 = st.columns([1,4])
 with col2:
     st.title("📚 AI-Powered Study Assistant")
     # Add the subtitle using st.markdown
-    st.markdown(
-    """
-    <h2 style="text-align: center; color: #4CAF50;">Transform Your Notes into Interactive Learning – AI-Powered Questions at Your Fingertips!</h2>
-    """,
-    unsafe_allow_html=True
-)
+    # Add the subtitle using st.markdown
+    st..markdown(
+        """
+        <h4 style="text-align: center; color: #4CAF50; font-style: italic; font-size: 20px;">
+        "Generate possible Questions from your Notebook – Go to exam hall more smarter, more confident!"
+        </h4>
+        """,
+        unsafe_allow_html=True
+    )
 
 # Initialize session state variables are initialized
 
