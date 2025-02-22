@@ -10,6 +10,7 @@ import openai
 import os
 import time
 import random
+import base64
 from pypdf import PdfReader
 from langchain.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
@@ -19,26 +20,30 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-# Set Streamlit page configuration
 st.set_page_config(page_title="Streamlit Background Image", layout="wide")
 
-# Get the absolute path of the static image
-image_path = os.path.join(os.getcwd(), "static", "Web_background.png")
+# Function to encode image in base64
+def get_base64_image(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
 
-# Define CSS to set background image
-bg_css = f"""
-<style>
-body {{
-    background-image: url("/static/Web_background.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}}
-</style>
-"""
+# Apply background image
+def set_background(image_path):
+    base64_img = get_base64_image(image_path)
+    bg_css = f"""
+    <style>
+    [data-testid="stAppViewContainer"] {{
+        background-image: url("data:image/png;base64,{base64_img}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }}
+    </style>
+    """
+    st.markdown(bg_css, unsafe_allow_html=True)
 
-# Inject CSS into Streamlit
-st.markdown(bg_css, unsafe_allow_html=True)
+# Use local background image
+set_background("static/Web_background.png")
 
 
 #create two columns
