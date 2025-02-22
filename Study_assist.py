@@ -20,31 +20,7 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-st.set_page_config(page_title="Streamlit Background Image", layout="wide")
-
-# Function to encode image in base64
-def get_base64_image(image_path):
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode()
-
-# Apply background image
-def set_background(image_path):
-    base64_img = get_base64_image(image_path)
-    bg_css = f"""
-    <style>
-    [data-testid="stAppViewContainer"] {{
-        background-image: url("data:image/png;base64,{base64_img}");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }}
-    </style>
-    """
-    st.markdown(bg_css, unsafe_allow_html=True)
-
-# Use local background image
-set_background("static/Web_background.png")
-
+st.set_page_config(layout="wide")
 
 #create two columns
 col1, col2 = st.columns([1,4])
