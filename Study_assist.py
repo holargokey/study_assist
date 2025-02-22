@@ -15,6 +15,7 @@ from pypdf import PdfReader
 from langchain.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
+
 #added to make the code work in streamlit
 __import__('pysqlite3')
 import sys
@@ -28,7 +29,13 @@ col1, col2 = st.columns([1,4])
 # Develop streamlit User Interface
 with col2:
     st.title("📚 AI-Powered Study Assistant")
-    
+    # Add the subtitle using st.markdown
+    st.markdown(
+    """
+    <h2 style="text-align: center; color: #4CAF50;">Transform Your Notes into Interactive Learning – AI-Powered Questions at Your Fingertips!</h2>
+    """,
+    unsafe_allow_html=True
+)
 
 # Initialize session state variables are initialized
 
