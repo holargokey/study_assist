@@ -19,8 +19,27 @@ __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
-#setting page layout
-st.set_page_config(layout="wide")
+# Set Streamlit page configuration
+st.set_page_config(page_title="Streamlit Background Image", layout="wide")
+
+# Get the absolute path of the static image
+image_path = os.path.join(os.getcwd(), "static", "Web_background.png")
+
+# Define CSS to set background image
+bg_css = f"""
+<style>
+body {{
+    background-image: url("/static/Web_background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}}
+</style>
+"""
+
+# Inject CSS into Streamlit
+st.markdown(bg_css, unsafe_allow_html=True)
+
 
 #create two columns
 col1, col2 = st.columns([1,4])
