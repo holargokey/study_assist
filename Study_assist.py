@@ -233,8 +233,6 @@ with col2:
         # ✅ Check if a document is uploaded before proceeding
         if "db" not in st.session_state or not st.session_state.db:
             st.warning("⚠️ Please upload a notebook before asking a question.")
-        #elif "last_question" in st.session_state and st.session_state.last_question == user_question:
-            #st.info("✅ This question has already been answered! Kindly see the response.")
         else:
             progress_bar = st.progress(0)  # ✅ Initialize Progress Bar
             progress_text = st.empty()  # ✅ Placeholder for status updates
@@ -303,7 +301,7 @@ with col2:
         st.session_state.quiz_generated = False
 
     # Allows user to select the number of questions (Minimum 5, Maximum 15)**
-    num_questions = st.slider("Select the number of quiz questions:", min_value=5, max_value=50, value=10)
+    num_questions = st.slider("Select the number of quiz questions:", min_value=1, max_value=50, value=5)
 
     if st.button("Generate Questions"):
         # Check if the document is uploaded before generating quiz questions
