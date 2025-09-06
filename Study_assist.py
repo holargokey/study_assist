@@ -17,9 +17,15 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_text_splitters import CharacterTextSplitter
 
 #added to make the code work in streamlit
-__import__('pysqlite3')
+# Make Streamlit work when system SQLite is too old
 import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+try:
+    import pysqlite3  # requires 'pysqlite3-binary' in requirements.txt
+    sys.modules["sqlite3"] = pysqlite3
+except ModuleNotFoundError:
+    # pysqlite3 not installed — fall back to stdlib sqlite3
+    pass
 
 st.set_page_config(layout="wide")
 
